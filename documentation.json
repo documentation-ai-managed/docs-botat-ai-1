@@ -1,6 +1,6 @@
 {
   "name": "botat ai",
-  "initialRoute": "introduction",
+  "initialRoute": "help-center",
   "colors": {
     "light": {
       "brand": "#0033FF"
@@ -122,5 +122,6 @@
         ]
       }
     ]
-  }
+  },
+  "template": "classic"
 }
