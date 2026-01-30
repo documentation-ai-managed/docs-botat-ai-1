@@ -1,0 +1,27 @@
+---
+title: Bot Not Responding
+description: What to do if botat ai stops replying.
+---
+
+## Symptoms
+
+- Bot does not reply to messages
+- Commands are ignored
+
+## Causes
+
+- Bot offline
+- API key invalid
+
+## Quick Fix
+
+<Steps>
+  <Step title="Check bot status">
+    ````bash
+    curl https://api.botatai.com/health
+    ````
+  </Step>
+  <Step title="Verify API key">
+    Use a valid API key in your integration settings.
+  </Step>
+</Steps>

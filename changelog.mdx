@@ -1,0 +1,138 @@
+---
+title: Changelog
+description: Review the version history of Botat AI, including recent updates, new features, and improvements to keep you informed.
+---
+
+## Recent Updates
+
+<Update label="2024-10-15" description="v1.3.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added WhatsApp broadcast campaigns for targeted messaging to multiple contacts.
+- Introduced AI-powered message personalization using customer data.
+- New analytics dashboard with real-time engagement metrics.
+
+## Improvements
+
+- Enhanced message delivery speed by `>30%` for high-volume sends.
+- Improved webhook reliability for incoming message events.
+
+## Bug Fixes
+
+- Fixed intermittent failures in template message approvals.
+- Resolved issue with contact opt-in status not updating correctly.
+
+</Update>
+
+<Update label="2024-09-25" description="v1.2.1" tags={["bugfix", "security"]}>
+
+## Bug Fixes
+
+- Patched security vulnerability in webhook endpoint validation (CVE-2024-XXXX).
+- Fixed crash when processing malformed incoming WhatsApp payloads.
+- Corrected rate limiting logic to prevent account suspensions.
+
+## Improvements
+
+- Optimized database queries for `>50%` faster contact list loading.
+
+</Update>
+
+<Update label="2024-09-10" description="v1.2.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Support for WhatsApp Business API v2.25 with new media handling.
+- Added flow builder for creating conversational AI bots.
+- Integrated real-time translation for multi-language support.
+
+## Breaking Changes
+
+- Updated authentication to require `client_id` alongside `API_KEY`.
+- Deprecated legacy `/v1/messages` endpoint; migrate to `/v2/messages`.
+
+## Improvements
+
+- Reduced API latency to `<100ms` for most endpoints.
+
+</Update>
+
+## Upcoming Changes
+
+<Callout kind="info">
+Watch for v1.4.0 in November 2024, which will introduce multi-channel support (WhatsApp + SMS + Email) and advanced AI analytics.
+</Callout>
+
+<Expandable title="Detailed Migration Guide for Breaking Changes" default-open="false">
+
+To migrate from deprecated endpoints:
+
+<CodeGroup tabs="JavaScript,cURL">
+```javascript
+// Old (deprecated)
+const response = await fetch('https://api.example.com/v1/messages', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` },
+  body: JSON.stringify({ to: '1234567890', message: 'Hello' })
+});
+
+// New (recommended)
+const response = await fetch('https://api.example.com/v2/messages', {
+  method: 'POST',
+  headers: { 
+    'Authorization': `Bearer ${YOUR_API_KEY}`,
+    'X-Client-ID': 'YOUR_CLIENT_ID'
+  },
+  body: JSON.stringify({ to: '1234567890', message: 'Hello' })
+});
+```
+```bash
+# Old (deprecated)
+curl -X POST https://api.example.com/v1/messages \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"to":"1234567890","message":"Hello"}'
+
+# New (recommended)
+curl -X POST https://api.example.com/v2/messages \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "X-Client-ID: YOUR_CLIENT_ID" \
+  -d '{"to":"1234567890","message":"Hello"}'
+```
+</CodeGroup>
+
+</Expandable>
+
+## Check Your Version
+
+Follow these steps to verify your Botat AI version:
+
+<Steps>
+  <Step title="Access Dashboard" icon="monitor">
+    Log in to your account at `https://dashboard.example.com`.
+  </Step>
+  <Step title="Navigate to Settings" icon="settings">
+    Click your profile icon in the top-right corner, then select **Settings**.
+  </Step>
+  <Step title="View Version" icon="info">
+    Scroll to the **Account Info** section. Your current version appears next to **API Version**.
+  </Step>
+</Steps>
+
+## Quick Links
+
+<Columns cols={3}>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Explore all endpoints and parameters.
+  </Card>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get started with your first WhatsApp integration.
+  </Card>
+  <Card title="Status Page" icon="activity" href="https://status.example.com" target="_blank">
+    Check live uptime and incidents.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+Subscribe to our RSS feed or join the Discord community for instant update notifications.
+</Callout>
